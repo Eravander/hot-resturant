@@ -19,21 +19,24 @@ app.listen(PORT, function() {
 });
 
 //variable storage
-var reservations = [
+var tables = [
   {
-    Table: "Table #1",
-    ID: "EdWinner",
-    Name: "Edwin Gonzalez",
-    Email: "Edwin@email.com",
-    Phone: "452-452-6524"
+    table: "Table #1",
+    id: "EdWinner",
+    name: "Edwin Gonzalez",
+    email: "Edwin@email.com",
+    phone: "452-452-6524"
   }];
 
 var waitList = [{
-  ID: "",
-  Name: "",
-  Email: "",
-  Phone: 0
+  table: "",
+  id: "",
+  name: "",
+  email: "",
+  phone: "0"
 }];
+
+var reserveData = [tables, waitList];
 
 // Basic route that sends the user first to the AJAX Page
 app.get("/", function(req, res) {
@@ -48,7 +51,25 @@ app.get("/tables", function(req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
-// Displays all characters
+// Displays all tables
 app.get("/api/tables", function(req, res) {
-  return res.json(tables);
+  return res.json(reserveData);
+});
+
+app.post("/", function (req, res) {
+  if (tables.length <= 5){
+  var table = req.body;
+  newtable.routename = newtable.name.replace("/\s+g").tolowerCase();
+  console.log(newtable);
+  tables.push(newtable);
+  res.json(newtable);
+  alert("You have reserved your table!")
+  } else {
+    var table = req.body;
+  newtable.routename = newtable.name.replace("/\s+g").tolowerCase();
+  console.log(newtable);
+  waitList.push(newtable);
+  res.json(newtable);
+  alert("We are booked up! But we have placed you on the waiting list.")
+  }
 });
