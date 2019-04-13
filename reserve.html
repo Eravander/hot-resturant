@@ -24,10 +24,10 @@
         <h1 class="display-4">Hot Restaurant</h1>
         <h2 class="lead">Make Your Reservation</h2>
         <hr class="my-4" />
-        <a class="btn btn-primary btn-lg" id="viewTables" href="#" role="button"
+        <a class="btn btn-primary btn-lg" id="viewTables" href="tables.html" role="button"
           >View All Tables</a
         >
-        <a class="btn btn-primary btn-lg" href="#" id="homeButton" role="button">Home</a>
+        <a class="btn btn-primary btn-lg" href="home.html" id="homeButton" role="button">Home</a>
       </div>
       <div class="card-body">
         <div class="form-group">
@@ -46,8 +46,29 @@
           <label for="uniqueid">Unique ID</label>
           <input type="text" class="form-control" id="uniqueid" />
         </div>
-        <input type="submit" class="btn btn-info" value="Submit Button" />
+        <input type="submit" class="btn btn-info" id="submit-button" value="Submit Button" />
       </div>
     </div>
+
+    <script type="text/javascript">
+        $("#submit-button").on("click", function(event) {
+            event.preventDefault();
+            var newReso = {
+                name : $("#name").val().trim(),
+                phone: $("#phone").val().trim(),
+                email: $("#email").val().trim(),
+                id: $("#uniqueid").val().trim(),
+            };
+
+            $.get("/api/tables", function(response) {
+                // loop over results
+            })
+
+            $.post("/api/tables", newReso)
+            .then(function(response) {
+
+            })
+        })
+    </script>
   </body>
 </html>
