@@ -16,9 +16,9 @@
             <h1 class="display-4">Hot Restaurant</h1>
             <p class="lead">Current Reservations and Waiting List</p>
             <hr class="my-4">
-            <button class="btn btn-primary btn-lg" href="#" role="button">
+            <button class="btn btn-primary btn-lg" id="reso-button" href="#" role="button">
                     <span class= "fa fa-credit-card"></span>Make a Reservation</button>
-                <button class="btn btn-primary btn-lg" href="#" role="button">
+                <button class="btn btn-primary btn-lg" id="home-button" href="#" role="button">
                     <span class= "fa fa-home"></span>Home</button>
         </div>
 
@@ -29,11 +29,11 @@
             <div class="card-body">
                 <ul>
                     <li class = "list-group-item mt-4">
-                        <h2>Table #1</h2>
-                        <h2>ID: </h2>
-                        <h2>Name: </h2>
-                        <h2>Email: </h2>
-                        <h2>Phone: </h2>
+                        <h2><strong>Table #1</strong></h2>
+                        <h2>ID: <span id= "table-id"></span></h2>
+                        <h2>Name: <span id="reso-name"></span> </h2>
+                        <h2>Email: <span id="reso-email"></span> </h2>
+                        <h2>Phone: <span id="reso-phone"></span> </h2>
                     </li>
                 </ul>
             </div>
@@ -47,10 +47,10 @@
                 <ul>
                     <li class = "list-group-item mt-4">
                         <h3>Waitlist #1</h3>
-                        <h3>ID: </h3>
-                        <h3>Name: </h3>
-                        <h3>Email: </h3>
-                        <h3>Phone: </h3>
+                        <h3>ID: <span id="wait-id"></span></h3>
+                        <h3>Name: <span id = "wait-name"></span></h3>
+                        <h3>Email: <span id ="wait-email"></span> </h3>
+                        <h3>Phone: <span id = "wait-phone"></span></h3>
                     </li>
                 </ul>
             </div>
