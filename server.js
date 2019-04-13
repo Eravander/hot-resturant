@@ -25,7 +25,8 @@ var tables = [
     id: "EdWinner",
     name: "Edwin Gonzalez",
     email: "Edwin@email.com",
-    phone: "452-452-6524"
+    phone: "452-452-6524",
+    success: true
   }];
 
 var waitList = [{
@@ -33,7 +34,8 @@ var waitList = [{
   id: "",
   name: "",
   email: "",
-  phone: "0"
+  phone: "0",
+  success: false
 }];
 
 var reserveData = [tables, waitList];
@@ -53,23 +55,28 @@ app.get("/tables", function(req, res) {
 
 // Displays all tables
 app.get("/api/tables", function(req, res) {
-  return res.json(reserveData);
+  return res.json(tables);
 });
 
-app.post("/", function (req, res) {
+app.get("/api/waitlist", function(req, res) {
+  return res.json(waitList);
+});
+
+app.post("/api/tables", function (req, res) {
   if (tables.length <= 5){
-  var table = req.body;
-  newtable.routename = newtable.name.replace("/\s+g").tolowerCase();
-  console.log(newtable);
-  tables.push(newtable);
-  res.json(newtable);
-  alert("You have reserved your table!")
+  var newTable = req.body;
+   newTable.success = true;
+  // newTable.routename = newTable.name.replace("/\s+g").tolowerCase();
+  console.log(newTable);
+  tables.push(newTable);
+  res.json(newTable);
   } else {
-    var table = req.body;
-  newtable.routename = newtable.name.replace("/\s+g").tolowerCase();
-  console.log(newtable);
-  waitList.push(newtable);
-  res.json(newtable);
-  alert("We are booked up! But we have placed you on the waiting list.")
+    var newTable = req.body;
+    newTable.success = false;
+  // newTable.routename = newTable.name.replace(/\s+/g, "").toLowerCase();
+  console.log(newTable);
+  waitList.push(newTable);
+  res.json(newTable);
+  
   }
 });
