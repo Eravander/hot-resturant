@@ -66,6 +66,7 @@ app.post("/api/tables", function (req, res) {
   if (tables.length <= 5){
   var newTable = req.body;
    newTable.success = true;
+   newTable.table = `Table ${tables.length + 1}`
   // newTable.routename = newTable.name.replace("/\s+g").tolowerCase();
   console.log(newTable);
   tables.push(newTable);
@@ -73,6 +74,7 @@ app.post("/api/tables", function (req, res) {
   } else {
     var newTable = req.body;
     newTable.success = false;
+    newTable.table = `Waitlist ${tables.length + 1}`
   // newTable.routename = newTable.name.replace(/\s+/g, "").toLowerCase();
   console.log(newTable);
   waitList.push(newTable);
