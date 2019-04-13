@@ -14,7 +14,7 @@ app.use(express.json());
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log("App listening on PORT " + PORT);
 });
 
@@ -41,43 +41,45 @@ var waitList = [{
 var reserveData = [tables, waitList];
 
 // Basic route that sends the user first to the AJAX Page
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "home.html"));
 });
 
-app.get("/reserve", function(req, res) {
+app.get("/reserve", function (req, res) {
   res.sendFile(path.join(__dirname, "reserve.html"));
 });
 
-app.get("/tables", function(req, res) {
+app.get("/tables", function (req, res) {
   res.sendFile(path.join(__dirname, "tables.html"));
 });
 
 // Displays all tables
-app.get("/api/tables", function(req, res) {
+app.get("/api/tables", function (req, res) {
   return res.json(tables);
 });
-
-app.get("/api/waitlist", function(req, res) {
+// Displays Waitlist
+app.get("/api/waitlist", function (req, res) {
   return res.json(waitList);
 });
-
+// Accepts posted information
 app.post("/api/tables", function (req, res) {
-  if (tables.length <= 5){
-  var newTable = req.body;
-   newTable.success = true;
-   newTable.table = `Table ${tables.length + 1}`
-  // newTable.routename = newTable.name.replace("/\s+g").tolowerCase();
-  console.log(newTable);
-  tables.push(newTable);
-  res.json(newTable);
+  //checks to see if tables are filled
+  if (tables.length < 5) {
+    var newTable = req.body;
+    //Creates a success boolean to determine if information is pushed to Table or Waitlist
+    newTable.success = true;
+    //Increments table number based on how many tables are in the array
+    newTable.table = `Table ${tables.length + 1}`
+    //logs out built object
+    console.log(newTable);
+    tables.push(newTable);
+    res.json(newTable);
   } else {
     var newTable = req.body;
     newTable.success = false;
     newTable.table = `Waitlist ${waitList.length + 1}`
-  // newTable.routename = newTable.name.replace(/\s+/g, "").toLowerCase();
-  console.log(newTable);
-  waitList.push(newTable);
-  res.json(newTable);
+    console.log(newTable);
+    waitList.push(newTable);
+    res.json(newTable);
   }
 });
