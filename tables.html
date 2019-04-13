@@ -55,6 +55,24 @@
                 </ul>
             </div>
         </div>
-    </div>    
+    </div>
+    
+    <script type="text/javascript">
+
+    
+
+    
+        $.get("/api/tables", function(response) {
+            console.log(response[0][0].name);
+                // loop over results
+                response[0].forEach(function(table) {
+                    $("#table-id").text(table.id);
+                    $("#reso-name").text(table.name);
+                    $("#reso-email").text(table.email);
+                    $("#reso-phone").text(table.phone);
+                })
+            })
+          
+    </script>
 </body>
 </html>

@@ -60,9 +60,7 @@
                 id: $("#uniqueid").val().trim(),
             };
 
-            $.get("/api/tables", function(response) {
-                // loop over results
-            })
+        
 
             $.post("/api/tables", newReso)
             .then(function(response) {
