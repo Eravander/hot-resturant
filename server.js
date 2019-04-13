@@ -74,7 +74,7 @@ app.post("/api/tables", function (req, res) {
   } else {
     var newTable = req.body;
     newTable.success = false;
-    newTable.table = `Waitlist ${tables.length + 1}`
+    newTable.table = `Waitlist ${waitList.length + 1}`
   // newTable.routename = newTable.name.replace(/\s+/g, "").toLowerCase();
   console.log(newTable);
   waitList.push(newTable);
