@@ -30,11 +30,11 @@ var tables = [
   }];
 
 var waitList = [{
-  table: "",
-  id: "",
-  name: "",
-  email: "",
-  phone: "0",
+  table: "Waitlist #1",
+  id: "Camwait",
+  name: "Cameron",
+  email: "Cameron@email.com",
+  phone: "555-867-5309",
   success: false
 }];
 
@@ -77,6 +77,5 @@ app.post("/api/tables", function (req, res) {
   console.log(newTable);
   waitList.push(newTable);
   res.json(newTable);
-  
   }
 });
